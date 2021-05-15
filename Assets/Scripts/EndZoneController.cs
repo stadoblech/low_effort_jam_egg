@@ -11,7 +11,7 @@ public class EndZoneController : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            playerEvents.OnPlayerKilled?.Invoke();
+            playerEvents.OnPlayerFinishedLevel?.Invoke();
         }
     }
 

@@ -25,7 +25,6 @@ public class ThirdPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(grounded);
         if(Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             rigid.AddForce(Vector3.up * jumpForce,ForceMode.Impulse);

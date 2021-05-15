@@ -37,6 +37,12 @@ public class GameController : MonoBehaviour
         playerEvents.OnPlayerFinishedLevel += playerFinishedLevel;
     }
 
+    private void OnDisable()
+    {
+        playerEvents.OnPlayerKilled -= playerKilled;
+        playerEvents.OnPlayerFinishedLevel -= playerFinishedLevel;
+    }
+
     void playerKilled()
     {
         setupEndGlobal(false);
