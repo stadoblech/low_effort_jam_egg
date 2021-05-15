@@ -10,9 +10,6 @@ public class EggCheckForImpact : MonoBehaviour
     [SerializeField]
     float brakeMagnitude;
 
-
-
-
     void Start()
     {
         
@@ -26,8 +23,7 @@ public class EggCheckForImpact : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.relativeVelocity.magnitude);
-        if (collision.relativeVelocity.magnitude >= brakeMagnitude || collision.transform.tag == "Deadly")
+        if (collision.gameObject != null && (collision.relativeVelocity.magnitude >= brakeMagnitude || collision.transform.tag == "Deadly"))
         {
             playerEvents.OnPlayerKilled?.Invoke();
         }

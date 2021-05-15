@@ -10,6 +10,11 @@ public class ThirdPersonController : MonoBehaviour
 
     Transform cam;
 
+    [SerializeField]
+    float raycastLenght;
+
+    bool grounded;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +25,8 @@ public class ThirdPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        print(grounded);
+        if(Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             rigid.AddForce(Vector3.up * jumpForce,ForceMode.Impulse);
         }
@@ -40,12 +46,22 @@ public class ThirdPersonController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
+        int floor = LayerMask.NameToLayer("Floor");
+        RaycastHit hit;
 
         // If it hits something...
-        if (hit.collider != null)
+        if (Physics.Raycast(transform.position, -Vector2.up,out hit,raycastLenght))
         {
+            if (hit.transform.gameObject.layer == floor)
+                grounded = true;
+            else
+                grounded = false;
+        }else
+            grounded = false;   
+    }
 
-        }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(transform.position,-Vector3.up * raycastLenght);
     }
 }
