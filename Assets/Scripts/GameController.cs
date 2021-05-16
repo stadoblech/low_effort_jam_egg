@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         UI.SetActive(false);
         playerModel = GameObject.FindGameObjectWithTag("Player");
         cineCam = GameObject.FindGameObjectWithTag("3dCam").GetComponent<CinemachineFreeLook>();
@@ -74,7 +76,7 @@ public class GameController : MonoBehaviour
         }
         Instantiate(brokenEggModel, playerModel.transform.position, Quaternion.identity);
         playerModel.SetActive(false);
-        cineCam.enabled = false;
+        //cineCam.enabled = false;
     }
 
 }

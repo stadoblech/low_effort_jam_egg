@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ea9a0455f38144ca9edeba20b592fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 1
+  moveForce: 2
   maxVelocity: 4
   jumpForce: 2
   raycastLenght: 0.15
